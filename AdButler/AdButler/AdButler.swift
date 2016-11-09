@@ -9,7 +9,10 @@
 import Foundation
 
 public class AdButler {
-    public func requestPlacement(with config: PlacementRequestConfig, completionHandler: () -> Void) {
+    public init() {    
+    }
+    
+    public func requestPlacement(with config: PlacementRequestConfig, completionHandler: @escaping () -> Void) {
         let urlString = "https://servedbyadbutler.com/adserve/\(config.queryString);type=json"
         guard let url = URL(string: urlString) else {
             completionHandler() // TODO: error handling
@@ -27,7 +30,7 @@ public class AdButler {
             if let _ = error {
                 completionHandler() // TODO: error handling
             } else if let httpResponse = response as? HTTPURLResponse, let data = data, httpResponse.statusCode == 200 {
-                if let json = JSONSerialization.jsonObject(with: data) {
+                if let json = try? JSONSerialization.jsonObject(with: data) {
                     print(json)
                 }
             } else {

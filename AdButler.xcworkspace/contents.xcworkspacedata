@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Swift Sample/Swift Sample.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:AdButler/AdButler.xcodeproj">
    </FileRef>
 </Workspace>
