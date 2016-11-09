@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FA9FACAA1DD2B8BD00250853 /* AdButler.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9FACA81DD2B8BD00250853 /* AdButler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA9FACB11DD2BA4800250853 /* PlacementRequestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FACB01DD2BA4800250853 /* PlacementRequestConfig.swift */; };
+		FA9FACB31DD2C05100250853 /* AdButler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FACB21DD2C05100250853 /* AdButler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +17,7 @@
 		FA9FACA81DD2B8BD00250853 /* AdButler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdButler.h; sourceTree = "<group>"; };
 		FA9FACA91DD2B8BD00250853 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA9FACB01DD2BA4800250853 /* PlacementRequestConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacementRequestConfig.swift; sourceTree = "<group>"; };
+		FA9FACB21DD2C05100250853 /* AdButler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdButler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 			children = (
 				FA9FACA81DD2B8BD00250853 /* AdButler.h */,
 				FA9FACA91DD2B8BD00250853 /* Info.plist */,
+				FA9FACB21DD2C05100250853 /* AdButler.swift */,
 				FA9FACB01DD2BA4800250853 /* PlacementRequestConfig.swift */,
 			);
 			path = AdButler;
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA9FACB31DD2C05100250853 /* AdButler.swift in Sources */,
 				FA9FACB11DD2BA4800250853 /* PlacementRequestConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
