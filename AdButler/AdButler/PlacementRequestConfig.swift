@@ -25,3 +25,17 @@ public class PlacementRequestConfig {
         self.click = click
     }
 }
+
+public extension PlacementRequestConfig {
+    public var queryString: String {
+        var query = ";ID=\(accountId);size=\(width)x\(height);setID=\(zoneId)"
+        if !keywords.isEmpty {
+            let keywordsString = keywords.joined(separator: ",")
+            query += ";kw=\(keywordsString)"
+        }
+        if let click = click {
+            query += ";click=\(click)"
+        }
+        return query
+    }
+}
