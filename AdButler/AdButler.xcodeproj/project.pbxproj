@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		FA9FACAA1DD2B8BD00250853 /* AdButler.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9FACA81DD2B8BD00250853 /* AdButler.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FA9FACB11DD2BA4800250853 /* PlacementRequestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FACB01DD2BA4800250853 /* PlacementRequestConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FA9FACA51DD2B8BD00250853 /* AdButler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AdButler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9FACA81DD2B8BD00250853 /* AdButler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdButler.h; sourceTree = "<group>"; };
 		FA9FACA91DD2B8BD00250853 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA9FACB01DD2BA4800250853 /* PlacementRequestConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacementRequestConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +50,7 @@
 			children = (
 				FA9FACA81DD2B8BD00250853 /* AdButler.h */,
 				FA9FACA91DD2B8BD00250853 /* Info.plist */,
+				FA9FACB01DD2BA4800250853 /* PlacementRequestConfig.swift */,
 			);
 			path = AdButler;
 			sourceTree = "<group>";
@@ -95,6 +98,7 @@
 				TargetAttributes = {
 					FA9FACA41DD2B8BD00250853 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -131,6 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA9FACB11DD2BA4800250853 /* PlacementRequestConfig.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +244,7 @@
 		FA9FACAE1DD2B8BD00250853 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -250,6 +256,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sparklit.adbutler.AdButler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -257,6 +264,7 @@
 		FA9FACAF1DD2B8BD00250853 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
