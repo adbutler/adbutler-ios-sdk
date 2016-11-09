@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class PlacementRequestConfig {
+@objc public class PlacementRequestConfig: NSObject {
     public var accountId: Int
     public var zoneId: Int
     public var width: Int

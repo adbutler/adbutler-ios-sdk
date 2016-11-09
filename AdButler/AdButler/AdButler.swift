@@ -8,8 +8,9 @@
 
 import Foundation
 
-public class AdButler {
-    public init() {    
+@objc public class AdButler: NSObject {
+    public override init() {
+        super.init()
     }
     
     public func requestPlacement(with config: PlacementRequestConfig, completionHandler: @escaping () -> Void) {
