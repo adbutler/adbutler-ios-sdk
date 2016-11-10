@@ -57,4 +57,23 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
         }
         task.resume()
     }
+    
+    @objc public func requestPlacement(with config: PlacementRequestConfig, success: @escaping (String, [Placement]) -> Void, failure: @escaping (NSNumber?, String?, Error?) -> Void) {
+        requestPlacement(with: config) { response in
+            switch response {
+            case .success(let status, let placements):
+                success(status.rawValue, placements)
+            case .badRequest(let statusCode, let responseBody):
+                var statusCodeNumber: NSNumber? = nil
+                if let statusCode = statusCode {
+                    statusCodeNumber = statusCode as? NSNumber
+                }
+                failure(statusCodeNumber, responseBody, nil)
+            case .invalidJson(let responseBody):
+                failure(nil, responseBody, nil)
+            case .requestError(let error):
+                failure(nil, nil, error)
+            }
+        }
+    }
 }
