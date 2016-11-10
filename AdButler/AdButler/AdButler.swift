@@ -8,13 +8,15 @@
 
 import Foundation
 
+fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
+
 @objc public class AdButler: NSObject {
     public override init() {
         super.init()
     }
     
     public func requestPlacement(with config: PlacementRequestConfig, completionHandler: @escaping () -> Void) {
-        let urlString = "https://servedbyadbutler.com/adserve/\(config.queryString);type=json"
+        let urlString = "\(baseUrl)/\(config.queryString);type=json"
         guard let url = URL(string: urlString) else {
             completionHandler() // TODO: error handling
             return

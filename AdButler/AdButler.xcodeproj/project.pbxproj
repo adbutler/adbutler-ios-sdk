@@ -10,6 +10,7 @@
 		FA9FACAA1DD2B8BD00250853 /* AdButler.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9FACA81DD2B8BD00250853 /* AdButler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA9FACB11DD2BA4800250853 /* PlacementRequestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FACB01DD2BA4800250853 /* PlacementRequestConfig.swift */; };
 		FA9FACB31DD2C05100250853 /* AdButler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FACB21DD2C05100250853 /* AdButler.swift */; };
+		FA9FAD5A1DD4020B00250853 /* Placement.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FAD591DD4020B00250853 /* Placement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +19,7 @@
 		FA9FACA91DD2B8BD00250853 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA9FACB01DD2BA4800250853 /* PlacementRequestConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacementRequestConfig.swift; sourceTree = "<group>"; };
 		FA9FACB21DD2C05100250853 /* AdButler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdButler.swift; sourceTree = "<group>"; };
+		FA9FAD591DD4020B00250853 /* Placement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Placement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 				FA9FACA91DD2B8BD00250853 /* Info.plist */,
 				FA9FACB21DD2C05100250853 /* AdButler.swift */,
 				FA9FACB01DD2BA4800250853 /* PlacementRequestConfig.swift */,
+				FA9FAD591DD4020B00250853 /* Placement.swift */,
 			);
 			path = AdButler;
 			sourceTree = "<group>";
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA9FAD5A1DD4020B00250853 /* Placement.swift in Sources */,
 				FA9FACB31DD2C05100250853 /* AdButler.swift in Sources */,
 				FA9FACB11DD2BA4800250853 /* PlacementRequestConfig.swift in Sources */,
 			);
@@ -303,6 +307,7 @@
 				FA9FACAF1DD2B8BD00250853 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
