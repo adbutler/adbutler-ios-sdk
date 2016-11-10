@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         let config = PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250)
-        AdButler().requestPlacement(with: config) { response in
+        AdButler.requestPlacement(with: config) { response in
             switch response {
             case .success(let status, let placements):
                 print(status.rawValue)

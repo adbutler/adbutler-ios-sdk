@@ -15,7 +15,7 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
         super.init()
     }
     
-    public func requestPlacement(with config: PlacementRequestConfig, completionHandler: @escaping (Response) -> Void) {
+    public static func requestPlacement(with config: PlacementRequestConfig, completionHandler: @escaping (Response) -> Void) {
         let urlString = "\(baseUrl)/\(config.queryString);type=json"
         guard let url = URL(string: urlString) else {
             return
@@ -58,7 +58,7 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
         task.resume()
     }
     
-    @objc public func requestPlacement(with config: PlacementRequestConfig, success: @escaping (String, [Placement]) -> Void, failure: @escaping (NSNumber?, String?, Error?) -> Void) {
+    @objc public static func requestPlacement(with config: PlacementRequestConfig, success: @escaping (String, [Placement]) -> Void, failure: @escaping (NSNumber?, String?, Error?) -> Void) {
         requestPlacement(with: config) { response in
             switch response {
             case .success(let status, let placements):
