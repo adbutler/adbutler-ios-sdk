@@ -37,3 +37,35 @@ import Foundation
         self.body = body
     }
 }
+
+public extension Placement {
+    convenience init?(from jsonDictionary: [String: String]) {
+        guard let bannerIdString = jsonDictionary["banner_id"],
+            let bannerId = Int(bannerIdString),
+            let widthString = jsonDictionary["width"],
+            let width = Int(widthString),
+            let heightString = jsonDictionary["height"],
+            let height = Int(heightString),
+            let altText = jsonDictionary["alt_text"],
+            let target = jsonDictionary["target"] else {
+                return nil
+        }
+        
+        let mapBlankToNil: (String?) -> String? = { str in
+            if let str = str, !str.isEmpty {
+                return str
+            } else {
+                return nil
+            }
+        }
+        let redirectUrl = mapBlankToNil(jsonDictionary["redirect_url"])
+        let imageUrl = mapBlankToNil(jsonDictionary["image_url"])
+        let trackingPixel = mapBlankToNil(jsonDictionary["tracking_pixel"])
+        let accupixelUrl = mapBlankToNil(jsonDictionary["accupixel_url"])
+        let refreshUrl = mapBlankToNil(jsonDictionary["refresh_url"])
+        let refreshTime = mapBlankToNil(jsonDictionary["refresh_time"])
+        let body = mapBlankToNil(jsonDictionary["body"])
+        
+        self.init(bannerId: bannerId, redirectUrl: redirectUrl, imageUrl: imageUrl, width: width, height: height, altText: altText, target: target, trackingPixel: trackingPixel, accupixelUrl: accupixelUrl, refreshUrl: refreshUrl, refreshTime: refreshTime, body: body)
+    }
+}
