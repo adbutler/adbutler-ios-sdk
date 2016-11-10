@@ -15,10 +15,9 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
         super.init()
     }
     
-    public func requestPlacement(with config: PlacementRequestConfig, completionHandler: @escaping () -> Void) {
+    public func requestPlacement(with config: PlacementRequestConfig, completionHandler: @escaping (Response) -> Void) {
         let urlString = "\(baseUrl)/\(config.queryString);type=json"
         guard let url = URL(string: urlString) else {
-            completionHandler() // TODO: error handling
             return
         }
         let request = URLRequest(url: url)
@@ -30,14 +29,30 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
         ]
         let session = URLSession(configuration: sessionConfig)
         let task = session.dataTask(with: request) { (data, response, error) in
-            if let _ = error {
-                completionHandler() // TODO: error handling
+            if let error = error {
+                completionHandler(.requestError(error))
             } else if let httpResponse = response as? HTTPURLResponse, let data = data, httpResponse.statusCode == 200 {
-                if let json = try? JSONSerialization.jsonObject(with: data) {
-                    print(json)
+                if let json = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
+                    let statusString = json["status"] as? String,
+                    let status = ResponseStatus(rawValue: statusString),
+                    let placementDictionary = json["placements"] as? [String: [String: String]] {
+                    var placements = [Placement]()
+                    for (_, v) in placementDictionary {
+                        if let placement = Placement(from: v) {
+                            placements.append(placement)
+                        }
+                    }
+                    completionHandler(.success(status, placements))
+                } else {
+                    completionHandler(.invalidJson(String(data: data, encoding: .utf8)))
                 }
             } else {
-                completionHandler() // TODO: error handling
+                let statusCode = (response as? HTTPURLResponse)?.statusCode
+                var responseBody: String? = nil
+                if let data = data {
+                    responseBody = String(data: data, encoding: .utf8)
+                }
+                completionHandler(.badRequest(statusCode, responseBody))
             }
         }
         task.resume()
