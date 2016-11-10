@@ -31,7 +31,7 @@ public extension PlacementRequestConfig {
         var query = ";ID=\(accountId);size=\(width)x\(height);setID=\(zoneId)"
         if !keywords.isEmpty {
             let keywordsString = keywords.joined(separator: ",")
-            query += ";kw=\(keywordsString)"
+            query += ";kw=\(keywordsString)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         }
         if let click = click {
             query += ";click=\(click)"
