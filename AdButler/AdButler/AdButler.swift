@@ -25,11 +25,9 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
     }()
     
     public static func requestPlacement(with config: PlacementRequestConfig, completionHandler: @escaping (Response) -> Void) {
-        let urlString = "\(baseUrl)/\(config.queryString);type=json"
-        guard let url = URL(string: urlString) else {
+        guard let request = config.buildRequest(with: baseUrl) else {
             return
         }
-        let request = URLRequest(url: url)
         let task = session.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 completionHandler(.requestError(error))
@@ -77,5 +75,15 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
                 failure(nil, nil, error)
             }
         }
+    }
+}
+
+fileprivate extension PlacementRequestConfig {
+    func buildRequest(with baseUrl: String) -> URLRequest? {
+        let urlString = "\(baseUrl)/\(queryString);type=json"
+        guard let url = URL(string: urlString) else {
+            return nil
+        }
+        return URLRequest(url: url)
     }
 }
