@@ -15,19 +15,21 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
         super.init()
     }
     
+    private static var session: URLSession = {
+        let sessionConfig = URLSessionConfiguration.ephemeral
+        sessionConfig.httpAdditionalHeaders = [
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        ]
+        return URLSession(configuration: sessionConfig)
+    }()
+    
     public static func requestPlacement(with config: PlacementRequestConfig, completionHandler: @escaping (Response) -> Void) {
         let urlString = "\(baseUrl)/\(config.queryString);type=json"
         guard let url = URL(string: urlString) else {
             return
         }
         let request = URLRequest(url: url)
-        
-        let sessionConfig = URLSessionConfiguration.ephemeral
-        sessionConfig.httpAdditionalHeaders = [
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        ]
-        let session = URLSession(configuration: sessionConfig)
         let task = session.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 completionHandler(.requestError(error))
