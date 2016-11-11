@@ -10,34 +10,35 @@ import UIKit
 import AdButler
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+    @IBAction func requestPlacementTapped(sender: Any) {
         let config = PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250)
-        AdButler.requestPlacement(with: config) { response in
-            switch response {
-            case .success(let status, let placements):
-                print(status.rawValue)
-                print(placements.map({ $0.debugString }))
-            case .badRequest(let statusCode, let responseBody):
-                print(statusCode ?? -1)
-                print(responseBody ?? "<no body>")
-            case .invalidJson(let responseBody):
-                print(responseBody ?? "<no body>")
-            case .requestError(let error):
-                print(error.localizedDescription)
-            }
+        AdButler.requestPlacement(with: config, completionHandler: placementResponseHandler)
+    }
+    
+    @IBAction func requestPlacementsTapped(sender: Any) {
+        let configs: [PlacementRequestConfig] = [
+            PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250),
+            PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250),
+            PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250),
+        ]
+        AdButler.requestPlacements(with: configs, completionHandler: placementResponseHandler)
+    }
+    
+    private func placementResponseHandler(response: Response) {
+        switch response {
+        case .success(let status, let placements):
+            print(status.rawValue)
+            print(placements.map({ $0.debugString }))
+        case .badRequest(let statusCode, let responseBody):
+            print(statusCode ?? -1)
+            print(responseBody ?? "<no body>")
+        case .invalidJson(let responseBody):
+            print(responseBody ?? "<no body>")
+        case .requestError(let error):
+            print(error.localizedDescription)
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
 }
 
 extension Placement {
