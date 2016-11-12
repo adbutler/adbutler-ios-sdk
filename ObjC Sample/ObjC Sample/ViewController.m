@@ -32,7 +32,10 @@
     } failure:^(NSNumber * _Nullable statusCode, NSString * _Nullable responseBody, NSError * _Nullable error) {
         // :)
     }];
-    
+}
+
+- (IBAction)requestPixelTapped:(id)sender {
+    [AdButler requestPixelWith:[NSURL URLWithString:@"https://servedbyadbutler.com/default_banner.gif"]];
 }
 
 @end
