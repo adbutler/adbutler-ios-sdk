@@ -31,39 +31,54 @@ class PlacementRequestOperation: AsynchronousOperation {
         return URLSession(configuration: sessionConfig)
     }()
     
+    private func _getTask(for request: URLRequest) -> URLSessionDataTask {
+        func handleError(error: Error) {
+            _complete(.requestError(error))
+        }
+        
+        func handleBadRequest(response: URLResponse?, data: Data?) {
+            let statusCode = (response as? HTTPURLResponse)?.statusCode
+            var responseBody: String? = nil
+            if let data = data {
+                responseBody = String(data: data, encoding: .utf8)
+            }
+            _complete(.badRequest(statusCode, responseBody))
+        }
+        
+        func handleData(data: Data) {
+            if let json = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
+                let statusString = json["status"] as? String,
+                let status = ResponseStatus(rawValue: statusString),
+                let placementDictionary = json["placements"] as? [String: [String: String]] {
+                var placements = [Placement]()
+                for (_, v) in placementDictionary {
+                    if let placement = Placement(from: v) {
+                        placements.append(placement)
+                    }
+                }
+                _complete(.success(status, placements))
+            } else {
+                _complete(.invalidJson(String(data: data, encoding: .utf8)))
+            }
+        }
+        
+        return session.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                handleError(error: error)
+            } else if let httpResponse = response as? HTTPURLResponse, let data = data, httpResponse.statusCode == 200 {
+                handleData(data: data)
+            } else {
+                handleBadRequest(response: response, data: data)
+            }
+            self.finish()
+        }
+    }
     
     override func main() {
         guard let request = _config.buildRequest(with: _baseUrl) else {
             return
         }
-        _task = session.dataTask(with: request) { [unowned self] (data, response, error) in
-            if let error = error {
-                self._complete(.requestError(error))
-            } else if let httpResponse = response as? HTTPURLResponse, let data = data, httpResponse.statusCode == 200 {
-                if let json = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
-                    let statusString = json["status"] as? String,
-                    let status = ResponseStatus(rawValue: statusString),
-                    let placementDictionary = json["placements"] as? [String: [String: String]] {
-                    var placements = [Placement]()
-                    for (_, v) in placementDictionary {
-                        if let placement = Placement(from: v) {
-                            placements.append(placement)
-                        }
-                    }
-                    self._complete(.success(status, placements))
-                } else {
-                    self._complete(.invalidJson(String(data: data, encoding: .utf8)))
-                }
-            } else {
-                let statusCode = (response as? HTTPURLResponse)?.statusCode
-                var responseBody: String? = nil
-                if let data = data {
-                    responseBody = String(data: data, encoding: .utf8)
-                }
-                self._complete(.badRequest(statusCode, responseBody))
-            }
-            self.finish()
-        }
+        _task = _getTask(for: request)
         _task?.resume()
     }
 }
