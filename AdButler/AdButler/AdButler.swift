@@ -15,92 +15,14 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
         super.init()
     }
     
-    private static var session: URLSession = {
-        let sessionConfig = URLSessionConfiguration.ephemeral
-        sessionConfig.httpAdditionalHeaders = [
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        ]
-        return URLSession(configuration: sessionConfig)
-    }()
-    
     public static func requestPlacements(with configs: [PlacementRequestConfig], completionHandler: @escaping (Response) -> Void) {
-        var responses = [Response]()
-        var tasks = [URLSessionDataTask]()
-        for config in configs {
-            guard let request = config.buildRequest(with: baseUrl) else {
-                continue
-            }
-            let task = session.dataTask(with: request) { (data, response, error) in
-                if let error = error {
-                    completionHandler(.requestError(error))
-                } else if let httpResponse = response as? HTTPURLResponse, let data = data, httpResponse.statusCode == 200 {
-                    if let json = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
-                        let statusString = json["status"] as? String,
-                        let status = ResponseStatus(rawValue: statusString),
-                        let placementDictionary = json["placements"] as? [String: [String: String]] {
-                        var placements = [Placement]()
-                        for (_, v) in placementDictionary {
-                            if let placement = Placement(from: v) {
-                                placements.append(placement)
-                            }
-                        }
-                        responses.append(.success(status, placements))
-                        if responses.count == tasks.count {
-                            var placements = [Placement]()
-                            for response in responses {
-                                switch response {
-                                case .success(let status, let eachPlacements):
-                                    placements.append(contentsOf: eachPlacements)
-                                default:
-                                    ()
-                                }
-                            }
-                            let status: ResponseStatus = placements.isEmpty ? .noAds : .success
-                            completionHandler(.success(status, placements))
-                        }
-                    }
-                }
-            }
-            tasks.append(task)
-        }
-        for task in tasks {
-            task.resume()
-        }
+        let requestManager = RequestManager(baseUrl: baseUrl, configs: configs, completionHandler: completionHandler)
+        requestManager.request()
     }
     
     public static func requestPlacement(with config: PlacementRequestConfig, completionHandler: @escaping (Response) -> Void) {
-        guard let request = config.buildRequest(with: baseUrl) else {
-            return
-        }
-        let task = session.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                completionHandler(.requestError(error))
-            } else if let httpResponse = response as? HTTPURLResponse, let data = data, httpResponse.statusCode == 200 {
-                if let json = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
-                    let statusString = json["status"] as? String,
-                    let status = ResponseStatus(rawValue: statusString),
-                    let placementDictionary = json["placements"] as? [String: [String: String]] {
-                    var placements = [Placement]()
-                    for (_, v) in placementDictionary {
-                        if let placement = Placement(from: v) {
-                            placements.append(placement)
-                        }
-                    }
-                    completionHandler(.success(status, placements))
-                } else {
-                    completionHandler(.invalidJson(String(data: data, encoding: .utf8)))
-                }
-            } else {
-                let statusCode = (response as? HTTPURLResponse)?.statusCode
-                var responseBody: String? = nil
-                if let data = data {
-                    responseBody = String(data: data, encoding: .utf8)
-                }
-                completionHandler(.badRequest(statusCode, responseBody))
-            }
-        }
-        task.resume()
+        let requestManager = RequestManager(baseUrl: baseUrl, config: config, completionHandler: completionHandler)
+        requestManager.request()
     }
     
     @objc public static func requestPlacement(with config: PlacementRequestConfig, success: @escaping (String, [Placement]) -> Void, failure: @escaping (NSNumber?, String?, Error?) -> Void) {
@@ -120,15 +42,5 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
                 failure(nil, nil, error)
             }
         }
-    }
-}
-
-fileprivate extension PlacementRequestConfig {
-    func buildRequest(with baseUrl: String) -> URLRequest? {
-        let urlString = "\(baseUrl)/\(queryString);type=json"
-        guard let url = URL(string: urlString) else {
-            return nil
-        }
-        return URLRequest(url: url)
     }
 }

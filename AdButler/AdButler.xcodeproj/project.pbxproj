@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA2013871DD6818C00B27D55 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2013861DD6818C00B27D55 /* RequestManager.swift */; };
+		FA2013891DD681A200B27D55 /* PlacementRequestOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2013881DD681A200B27D55 /* PlacementRequestOperation.swift */; };
+		FA20138B1DD681B900B27D55 /* PlacementResponseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20138A1DD681B900B27D55 /* PlacementResponseOperation.swift */; };
+		FA20138D1DD6882200B27D55 /* AsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20138C1DD6882200B27D55 /* AsynchronousOperation.swift */; };
+		FA20138F1DD68F3A00B27D55 /* ResponseCollector.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA20138E1DD68F3A00B27D55 /* ResponseCollector.swift */; };
 		FA9FACAA1DD2B8BD00250853 /* AdButler.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9FACA81DD2B8BD00250853 /* AdButler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA9FACB11DD2BA4800250853 /* PlacementRequestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FACB01DD2BA4800250853 /* PlacementRequestConfig.swift */; };
 		FA9FACB31DD2C05100250853 /* AdButler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FACB21DD2C05100250853 /* AdButler.swift */; };
@@ -15,6 +20,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA2013861DD6818C00B27D55 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		FA2013881DD681A200B27D55 /* PlacementRequestOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacementRequestOperation.swift; sourceTree = "<group>"; };
+		FA20138A1DD681B900B27D55 /* PlacementResponseOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacementResponseOperation.swift; sourceTree = "<group>"; };
+		FA20138C1DD6882200B27D55 /* AsynchronousOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
+		FA20138E1DD68F3A00B27D55 /* ResponseCollector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseCollector.swift; sourceTree = "<group>"; };
 		FA9FACA51DD2B8BD00250853 /* AdButler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AdButler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9FACA81DD2B8BD00250853 /* AdButler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdButler.h; sourceTree = "<group>"; };
 		FA9FACA91DD2B8BD00250853 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,6 +45,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA2013851DD6809D00B27D55 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				FA20138C1DD6882200B27D55 /* AsynchronousOperation.swift */,
+				FA20138E1DD68F3A00B27D55 /* ResponseCollector.swift */,
+				FA2013881DD681A200B27D55 /* PlacementRequestOperation.swift */,
+				FA20138A1DD681B900B27D55 /* PlacementResponseOperation.swift */,
+				FA2013861DD6818C00B27D55 /* RequestManager.swift */,
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
 		FA9FAC9B1DD2B8BD00250853 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +76,7 @@
 		FA9FACA71DD2B8BD00250853 /* AdButler */ = {
 			isa = PBXGroup;
 			children = (
+				FA2013851DD6809D00B27D55 /* Request */,
 				FA9FACA81DD2B8BD00250853 /* AdButler.h */,
 				FA9FACA91DD2B8BD00250853 /* Info.plist */,
 				FA9FACB21DD2C05100250853 /* AdButler.swift */,
@@ -144,10 +167,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2013871DD6818C00B27D55 /* RequestManager.swift in Sources */,
 				FA9FAD5C1DD4052F00250853 /* Response.swift in Sources */,
 				FA9FAD5A1DD4020B00250853 /* Placement.swift in Sources */,
+				FA20138D1DD6882200B27D55 /* AsynchronousOperation.swift in Sources */,
+				FA20138F1DD68F3A00B27D55 /* ResponseCollector.swift in Sources */,
+				FA20138B1DD681B900B27D55 /* PlacementResponseOperation.swift in Sources */,
 				FA9FACB31DD2C05100250853 /* AdButler.swift in Sources */,
 				FA9FACB11DD2BA4800250853 /* PlacementRequestConfig.swift in Sources */,
+				FA2013891DD681A200B27D55 /* PlacementRequestOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
