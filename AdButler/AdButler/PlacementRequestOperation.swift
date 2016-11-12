@@ -22,13 +22,7 @@ class PlacementRequestOperation: AsynchronousOperation {
     }
     
     private var session: URLSession = {
-        let sessionConfig = URLSessionConfiguration.ephemeral
-        sessionConfig.httpAdditionalHeaders = [
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "User-Agent": "AdButler/\(AdButlerVersionNumber) (\(UIDevice.deviceModel); \(UIDevice.osVersion))"
-        ]
-        return URLSession(configuration: sessionConfig)
+        return getSession()
     }()
     
     private func _getTask(for request: URLRequest) -> URLSessionDataTask {

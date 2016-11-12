@@ -32,6 +32,17 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
     @objc public static func requestPlacement(with config: PlacementRequestConfig, success: @escaping (String, [Placement]) -> Void, failure: @escaping (NSNumber?, String?, Error?) -> Void) {
         requestPlacement(with: config) { $0.objcCallbacks(success: success, failure: failure) }
     }
+    
+    @objc public static func requestPixel(with url: URL) {
+        let request = URLRequest(url: url)
+        let session = getSession()
+        let task = session.dataTask(with: url) { (_, _, error) in
+            if let error = error {
+                print("Error when requeset a pixel with url \(url.absoluteString)")
+            }
+        }
+        task.resume()
+    }
 }
 
 fileprivate extension Response {
