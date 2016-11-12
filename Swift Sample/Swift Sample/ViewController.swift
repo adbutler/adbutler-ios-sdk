@@ -10,12 +10,12 @@ import UIKit
 import AdButler
 
 class ViewController: UIViewController {
-    @IBAction func requestPlacementTapped(sender: Any) {
+    @IBAction func requestPlacementTapped(_ sender: Any) {
         let config = PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250)
         AdButler.requestPlacement(with: config, completionHandler: placementResponseHandler)
     }
     
-    @IBAction func requestPlacementsTapped(sender: Any) {
+    @IBAction func requestPlacementsTapped(_ sender: Any) {
         let configs: [PlacementRequestConfig] = [
             PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250),
             PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250),
@@ -39,6 +39,13 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func requestPixelTapped(_ sender: Any) {
+        guard let url = URL(string: "https://servedbyadbutler.com/default_banner.gif") else {
+            print("Failed in getting a url")
+            return
+        }
+        AdButler.requestPixel(with: url)
+    }
 }
 
 extension Placement {
