@@ -25,7 +25,8 @@ class PlacementRequestOperation: AsynchronousOperation {
         let sessionConfig = URLSessionConfiguration.ephemeral
         sessionConfig.httpAdditionalHeaders = [
             "Content-Type": "application/json",
-            "Accept": "application/json"
+            "Accept": "application/json",
+            "User-Agent": "AdButler/1.0 (\(UIDevice.deviceModel); \(UIDevice.osVersion))"
         ]
         return URLSession(configuration: sessionConfig)
     }()
