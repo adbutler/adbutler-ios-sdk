@@ -16,18 +16,23 @@ class PlacementResponseOperation: AsynchronousOperation {
     }
     
     override func main() {
+        defer {
+            finish()
+        }
+        
         let responses = _responseCollector.responses
         var placements = [Placement]()
         for response in responses {
-            switch response {
-            case .success(let status, let eachPlacements):
+            if case let .success(status, eachPlacements) = response {
+                // we aggregate all successful responses
                 placements.append(contentsOf: eachPlacements)
-            default:
-                ()
+            } else {
+                // for unsuccessful requests, we just return the first failure
+                _responseCollector.complete(response)
+                return
             }
         }
         let status: ResponseStatus = placements.isEmpty ? .noAds : .success
         _responseCollector.complete(.success(status, placements))
-        finish()
     }
 }
