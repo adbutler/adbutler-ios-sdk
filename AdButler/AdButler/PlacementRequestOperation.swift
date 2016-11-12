@@ -76,6 +76,7 @@ class PlacementRequestOperation: AsynchronousOperation {
     
     override func main() {
         guard let request = _config.buildRequest(with: _baseUrl) else {
+            print("Failed in getting a request for account id \(_config.accountId) and zone id \(_config.zoneId)")
             return
         }
         _task = _getTask(for: request)
