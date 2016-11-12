@@ -15,10 +15,7 @@
 
 @implementation ViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    
+- (IBAction)requestPlacementTapped:(id)sender {
     PlacementRequestConfig *config = [[PlacementRequestConfig alloc] initWithAccountId:153105 zoneId:214764 width:300 height:250 keywords:@[] click:nil];
     [AdButler requestPlacementWith:config success:^(NSString * _Nonnull status, NSArray<Placement *> * _Nonnull placements) {
         NSLog(@"status: %@\nplacements: %@", status, placements);
@@ -27,11 +24,15 @@
     }];
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)requestPlacementsTapped:(id)sender {
+    PlacementRequestConfig *config = [[PlacementRequestConfig alloc] initWithAccountId:153105 zoneId:214764 width:300 height:250 keywords:@[] click:nil];
+    NSArray *configs = @[config, config, config];
+    [AdButler requestPlacementsWith:configs success:^(NSString * _Nonnull status, NSArray<Placement *> * _Nonnull placements) {
+        NSLog(@"status: %@\nplacements: %@", status, placements);
+    } failure:^(NSNumber * _Nullable statusCode, NSString * _Nullable responseBody, NSError * _Nullable error) {
+        // :)
+    }];
+    
 }
-
 
 @end
