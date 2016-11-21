@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16C48b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -51,15 +51,39 @@
                                     <action selector="requestPixelTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zuW-7A-8HD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OfB-6D-RqQ">
+                                <rect key="frame" x="123" y="134" width="128" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="SYg-2M-jjv"/>
+                                </constraints>
+                                <state key="normal" title="Record Impression"/>
+                                <connections>
+                                    <action selector="recordImpressionTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TRI-PQ-AY7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5e-sU-GZ4">
+                                <rect key="frame" x="144" y="172" width="87" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="87" id="PPW-EO-2tR"/>
+                                </constraints>
+                                <state key="normal" title="Record Click"/>
+                                <connections>
+                                    <action selector="recordClickTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Oeu-pw-VFS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="OfB-6D-RqQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="04V-PG-W5a"/>
                             <constraint firstItem="NI8-JE-dNl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2sN-ml-XXh"/>
                             <constraint firstItem="non-tg-i4X" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7qM-Af-RKv"/>
+                            <constraint firstItem="OfB-6D-RqQ" firstAttribute="top" secondItem="non-tg-i4X" secondAttribute="bottom" constant="8" id="B3y-SY-qcq"/>
                             <constraint firstItem="non-tg-i4X" firstAttribute="top" secondItem="VH7-uI-HFx" secondAttribute="bottom" constant="8" id="Q57-H2-2Ke"/>
                             <constraint firstItem="NI8-JE-dNl" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="V3Q-F4-vsF"/>
+                            <constraint firstItem="N5e-sU-GZ4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YUk-UC-YeW"/>
                             <constraint firstItem="VH7-uI-HFx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eUp-Nk-VPO"/>
                             <constraint firstItem="VH7-uI-HFx" firstAttribute="top" secondItem="NI8-JE-dNl" secondAttribute="bottom" constant="8" id="qjs-po-YB7"/>
+                            <constraint firstItem="N5e-sU-GZ4" firstAttribute="top" secondItem="OfB-6D-RqQ" secondAttribute="bottom" constant="8" id="vrD-kH-BYI"/>
                         </constraints>
                     </view>
                 </viewController>

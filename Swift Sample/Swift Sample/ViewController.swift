@@ -18,8 +18,7 @@ class ViewController: UIViewController {
     @IBAction func requestPlacementsTapped(_ sender: Any) {
         let configs: [PlacementRequestConfig] = [
             PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250),
-            PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250),
-            PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250),
+            PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250, keywords: ["sample2"]),
         ]
         AdButler.requestPlacements(with: configs, completionHandler: placementResponseHandler)
     }
@@ -45,6 +44,25 @@ class ViewController: UIViewController {
             return
         }
         AdButler.requestPixel(with: url)
+    }
+    
+    @IBAction func recordImpressionTapped(_ sender: Any) {
+        recordPlacement(recordClosure: { $0.recordImpression() })
+    }
+    
+    @IBAction func recordClickTapped(_ sender: Any) {
+        recordPlacement(recordClosure: { $0.recordClick() })
+    }
+    
+    private func recordPlacement(recordClosure: @escaping (Placement) -> Void) {
+        let config = PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250, keywords: ["sample2"])
+        AdButler.requestPlacement(with: config, completionHandler: { response in
+            guard case let .success(status, placements) = response, status == .success else {
+                return
+            }
+            
+            placements.forEach(recordClosure)
+        })
     }
 }
 
