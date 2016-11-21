@@ -25,8 +25,10 @@
 }
 
 - (IBAction)requestPlacementsTapped:(id)sender {
-    PlacementRequestConfig *config = [[PlacementRequestConfig alloc] initWithAccountId:153105 zoneId:214764 width:300 height:250 keywords:@[] click:nil];
-    NSArray *configs = @[config, config, config];
+    NSArray<PlacementRequestConfig *> *configs = @[
+                                                 [[PlacementRequestConfig alloc] initWithAccountId:153105 zoneId:214764 width:300 height:250 keywords:@[] click:nil],
+                                                 [[PlacementRequestConfig alloc] initWithAccountId:153105 zoneId:214764 width:300 height:250 keywords:@[@"sample2"] click:nil],
+                                                 ];
     [AdButler requestPlacementsWith:configs success:^(NSString * _Nonnull status, NSArray<Placement *> * _Nonnull placements) {
         NSLog(@"status: %@\nplacements: %@", status, placements);
     } failure:^(NSNumber * _Nullable statusCode, NSString * _Nullable responseBody, NSError * _Nullable error) {
@@ -36,6 +38,32 @@
 
 - (IBAction)requestPixelTapped:(id)sender {
     [AdButler requestPixelWith:[NSURL URLWithString:@"https://servedbyadbutler.com/default_banner.gif"]];
+}
+
+- (IBAction)recordImpressionTapped:(id)sender {
+    PlacementRequestConfig *config = [[PlacementRequestConfig alloc] initWithAccountId:153105 zoneId:214764 width:300 height:250 keywords:@[@"sample2"] click:nil];
+    [AdButler requestPlacementWith:config success:^(NSString * _Nonnull status, NSArray<Placement *> * _Nonnull placements) {
+        if ([status isEqualToString:@"SUCCESS"]) {
+            for (Placement *placement in placements) {
+                [placement recordImpression];
+            }
+        }
+    } failure:^(NSNumber * _Nullable statusCode, NSString * _Nullable responseBody, NSError * _Nullable error) {
+        // :)
+    }];
+}
+
+- (IBAction)recordClickTapped:(id)sender {
+    PlacementRequestConfig *config = [[PlacementRequestConfig alloc] initWithAccountId:153105 zoneId:214764 width:300 height:250 keywords:@[@"sample2"] click:nil];
+    [AdButler requestPlacementWith:config success:^(NSString * _Nonnull status, NSArray<Placement *> * _Nonnull placements) {
+        if ([status isEqualToString:@"SUCCESS"]) {
+            for (Placement *placement in placements) {
+                [placement recordClick];
+            }
+        }
+    } failure:^(NSNumber * _Nullable statusCode, NSString * _Nullable responseBody, NSError * _Nullable error) {
+        // :)
+    }];
 }
 
 @end
