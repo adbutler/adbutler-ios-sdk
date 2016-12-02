@@ -38,7 +38,7 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
         let session = getSession()
         let task = session.dataTask(with: url) { (_, _, error) in
             if let error = error {
-                print("Error when requeset a pixel with url \(url.absoluteString)")
+                print("Error requeseting a pixel with url \(url.absoluteString)")
             }
         }
         task.resume()
