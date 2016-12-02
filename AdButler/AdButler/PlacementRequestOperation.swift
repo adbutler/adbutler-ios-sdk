@@ -21,10 +21,6 @@ class PlacementRequestOperation: AsynchronousOperation {
         _complete = completionHandler
     }
     
-    private var session: URLSession = {
-        return getSession()
-    }()
-    
     private func _getTask(for request: URLRequest) -> URLSessionDataTask {
         func handleError(error: Error) {
             _complete(.requestError(error))
@@ -56,7 +52,7 @@ class PlacementRequestOperation: AsynchronousOperation {
             }
         }
         
-        return session.dataTask(with: request) { (data, response, error) in
+        return Session().urlSession.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 handleError(error: error)
             } else if let httpResponse = response as? HTTPURLResponse, let data = data, httpResponse.statusCode == 200 {

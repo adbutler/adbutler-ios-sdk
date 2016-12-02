@@ -35,7 +35,7 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
     
     @objc public static func requestPixel(with url: URL) {
         let request = URLRequest(url: url)
-        let session = getSession()
+        let session = Session().urlSession
         let task = session.dataTask(with: url) { (_, _, error) in
             if let error = error {
                 print("Error requeseting a pixel with url \(url.absoluteString)")
