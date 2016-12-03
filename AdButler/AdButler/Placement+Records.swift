@@ -10,18 +10,18 @@ import Foundation
 
 public extension Placement {
     public func recordImpression() {
-        if let accupixelUrl = self.accupixelUrl.map({ URL(string: $0) }), let url = accupixelUrl {
-            AdButler.requestPixel(with: url)
-        } else if let trackingPixel = self.trackingPixel.map({ URL(string: $0) }), let url = trackingPixel {
-            AdButler.requestPixel(with: url)
+        if let accupixelUrl = self.accupixelUrl.flatMap({ URL(string: $0) }) {
+            AdButler.requestPixel(with: accupixelUrl)
+        } else if let trackingPixel = self.trackingPixel.flatMap({ URL(string: $0) }) {
+            AdButler.requestPixel(with: trackingPixel)
         } else {
             print("Cannot construct a valid impression URL.")
         }
     }
     
     public func recordClick() {
-        if let redirectUrl = self.redirectUrl.map({ URL(string: $0) }), let url = redirectUrl {
-            AdButler.requestPixel(with: url)
+        if let redirectUrl = self.redirectUrl.flatMap({ URL(string: $0) }) {
+            AdButler.requestPixel(with: redirectUrl)
         } else {
             print("Cannot construct a valid redirect URL.")
         }
