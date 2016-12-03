@@ -41,29 +41,28 @@
 }
 
 - (IBAction)recordImpressionTapped:(id)sender {
-    PlacementRequestConfig *config = [[PlacementRequestConfig alloc] initWithAccountId:153105 zoneId:214764 width:300 height:250 keywords:@[@"sample2"] click:nil];
-    [AdButler requestPlacementWith:config success:^(NSString * _Nonnull status, NSArray<Placement *> * _Nonnull placements) {
-        if ([status isEqualToString:@"SUCCESS"]) {
-            for (Placement *placement in placements) {
-                [placement recordImpression];
-            }
-        }
-    } failure:^(NSNumber * _Nullable statusCode, NSString * _Nullable responseBody, NSError * _Nullable error) {
-        // :)
-    }];
+    Placement *placement = [self getSamplePlacement];
+    [placement recordImpression];
 }
 
 - (IBAction)recordClickTapped:(id)sender {
-    PlacementRequestConfig *config = [[PlacementRequestConfig alloc] initWithAccountId:153105 zoneId:214764 width:300 height:250 keywords:@[@"sample2"] click:nil];
-    [AdButler requestPlacementWith:config success:^(NSString * _Nonnull status, NSArray<Placement *> * _Nonnull placements) {
-        if ([status isEqualToString:@"SUCCESS"]) {
-            for (Placement *placement in placements) {
-                [placement recordClick];
-            }
-        }
-    } failure:^(NSNumber * _Nullable statusCode, NSString * _Nullable responseBody, NSError * _Nullable error) {
-        // :)
-    }];
+    Placement *placement = [self getSamplePlacement];
+    [placement recordClick];
+}
+
+- (Placement *)getSamplePlacement {
+    return [[Placement alloc] initWithBannerId:519407754
+                                   redirectUrl: @"https://servedbyadbutler.com/redirect.spark?MID=153105&plid=550986&setID=214764&channelID=0&CID=0&banID=519407754&PID=0&textadID=0&tc=1&mt=1480778998606477&hc=534448fb7fb5835eaca37f949e61a363d8237324&location="
+                                      imageUrl: @"http://servedbyadbutler.com/default_banner.gif"
+                                         width: 300
+                                        height: 250
+                                       altText: @""
+                                        target: @"_blank"
+                                 trackingPixel: @"http://servedbyadbutler.com/default_banner.gif?foo=bar&demo=fakepixel"
+                                  accupixelUrl: @"https://servedbyadbutler.com/adserve.ibs/;ID=153105;size=1x1;type=pixel;setID=214764;plid=550986;BID=519407754;wt=1480779008;rnd=90858"
+                                    refreshUrl:nil
+                                   refreshTime:nil
+                                          body:nil];
 }
 
 @end
