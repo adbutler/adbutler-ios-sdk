@@ -24,10 +24,12 @@ public extension Placement {
             }
             
             let image = UIImage(data: data)
-            let imageView = UIImageView(image: image)
+            let imageView = ABImageView(image: image)
+            imageView.placement = self
             
             DispatchQueue.main.async {
                 complete(imageView)
+                imageView.setupGestures()
             }
         }
         task.resume()
