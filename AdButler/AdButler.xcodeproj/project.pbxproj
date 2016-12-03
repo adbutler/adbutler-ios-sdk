@@ -15,6 +15,7 @@
 		FA2013921DD6BA8300B27D55 /* UIDevice+AdButler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2013911DD6BA8300B27D55 /* UIDevice+AdButler.swift */; };
 		FA2013B61DD7BC2E00B27D55 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2013B51DD7BC2E00B27D55 /* Session.swift */; };
 		FA265B841DE28EFA00E5080D /* Placement+Records.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA265B831DE28EFA00E5080D /* Placement+Records.swift */; };
+		FA90E31C1DF320C40060592A /* Placement+ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90E31B1DF320C40060592A /* Placement+ImageView.swift */; };
 		FA9FACAA1DD2B8BD00250853 /* AdButler.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9FACA81DD2B8BD00250853 /* AdButler.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA9FACB11DD2BA4800250853 /* PlacementRequestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FACB01DD2BA4800250853 /* PlacementRequestConfig.swift */; };
 		FA9FACB31DD2C05100250853 /* AdButler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FACB21DD2C05100250853 /* AdButler.swift */; };
@@ -31,6 +32,7 @@
 		FA2013911DD6BA8300B27D55 /* UIDevice+AdButler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+AdButler.swift"; sourceTree = "<group>"; };
 		FA2013B51DD7BC2E00B27D55 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		FA265B831DE28EFA00E5080D /* Placement+Records.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Placement+Records.swift"; sourceTree = "<group>"; };
+		FA90E31B1DF320C40060592A /* Placement+ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Placement+ImageView.swift"; sourceTree = "<group>"; };
 		FA9FACA51DD2B8BD00250853 /* AdButler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AdButler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9FACA81DD2B8BD00250853 /* AdButler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdButler.h; sourceTree = "<group>"; };
 		FA9FACA91DD2B8BD00250853 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				FA9FAD5B1DD4052F00250853 /* Response.swift */,
 				FA9FAD591DD4020B00250853 /* Placement.swift */,
 				FA265B831DE28EFA00E5080D /* Placement+Records.swift */,
+				FA90E31B1DF320C40060592A /* Placement+ImageView.swift */,
 			);
 			path = AdButler;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				FA2013871DD6818C00B27D55 /* RequestManager.swift in Sources */,
 				FA9FAD5C1DD4052F00250853 /* Response.swift in Sources */,
 				FA9FAD5A1DD4020B00250853 /* Placement.swift in Sources */,
+				FA90E31C1DF320C40060592A /* Placement+ImageView.swift in Sources */,
 				FA20138D1DD6882200B27D55 /* AsynchronousOperation.swift in Sources */,
 				FA265B841DE28EFA00E5080D /* Placement+Records.swift in Sources */,
 				FA20138F1DD68F3A00B27D55 /* ResponseCollector.swift in Sources */,

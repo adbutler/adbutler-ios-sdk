@@ -11,12 +11,29 @@ import AdButler
 
 class ViewController: UIViewController {
     @IBAction func requestPlacementTapped(_ sender: Any) {
-        let config = PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        let config = PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250, keywords: ["sample2"])
         AdButler.requestPlacement(with: config) { response in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             switch response {
             case .success(let status, let placements):
                 print(status.rawValue)
                 print(placements.map({ $0.debugString }))
+                
+                guard placements.count == 1 else {
+                    return
+                }
+                
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
+                placements[0].getImageView { imageView in
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    var imageViewFrame = imageView.frame
+                    imageViewFrame.origin.y = self.view.frame.height - imageViewFrame.size.height - 10
+                    imageViewFrame.origin.x = (self.view.frame.width - imageViewFrame.size.width) / 2
+                    imageView.frame = imageViewFrame
+                    self.view.addSubview(imageView)
+                }
             case .badRequest(let statusCode, let responseBody):
                 print(statusCode ?? -1)
                 print(responseBody ?? "<no body>")
