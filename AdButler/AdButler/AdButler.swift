@@ -34,10 +34,9 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
     }
     
     @objc public static func requestPixel(with url: URL) {
-        let request = URLRequest(url: url)
         let session = Session().urlSession
         let task = session.dataTask(with: url) { (_, _, error) in
-            if let error = error {
+            if error != nil {
                 print("Error requeseting a pixel with url \(url.absoluteString)")
             }
         }
@@ -53,7 +52,7 @@ fileprivate extension Response {
         case .badRequest(let statusCode, let responseBody):
             var statusCodeNumber: NSNumber? = nil
             if let statusCode = statusCode {
-                statusCodeNumber = statusCode as? NSNumber
+                statusCodeNumber = statusCode as NSNumber
             }
             failure(statusCodeNumber, responseBody, nil)
         case .invalidJson(let responseBody):

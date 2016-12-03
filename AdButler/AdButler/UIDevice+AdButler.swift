@@ -6,7 +6,7 @@
 //  Copyright © 2016 AdButler. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension UIDevice {
     static var deviceModel: String {

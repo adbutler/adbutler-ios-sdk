@@ -17,8 +17,8 @@ public extension Placement {
         
         let session = URLSession(configuration: .ephemeral)
         let task = session.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                return
+            if error != nil {
+                print("Error requeseting an image with url \(url.absoluteString)")
             }
             guard let httpResponse = response as? HTTPURLResponse, let data = data, httpResponse.statusCode == 200 else {
                 return

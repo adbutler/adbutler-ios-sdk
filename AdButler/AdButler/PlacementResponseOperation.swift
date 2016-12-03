@@ -23,7 +23,7 @@ class PlacementResponseOperation: AsynchronousOperation {
         let responses = _responseCollector.responses
         var placements = [Placement]()
         for response in responses {
-            if case let .success(status, eachPlacements) = response {
+            if case let .success(_, eachPlacements) = response {
                 // we aggregate all successful responses
                 placements.append(contentsOf: eachPlacements)
             } else {
