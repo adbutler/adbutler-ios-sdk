@@ -16,9 +16,21 @@
 @implementation ViewController
 
 - (IBAction)requestPlacementTapped:(id)sender {
-    PlacementRequestConfig *config = [[PlacementRequestConfig alloc] initWithAccountId:153105 zoneId:214764 width:300 height:250 keywords:@[] click:nil];
+    PlacementRequestConfig *config = [[PlacementRequestConfig alloc] initWithAccountId:153105 zoneId:214764 width:300 height:250 keywords:@[@"sample2"] click:nil];
     [AdButler requestPlacementWith:config success:^(NSString * _Nonnull status, NSArray<Placement *> * _Nonnull placements) {
         NSLog(@"status: %@\nplacements: %@", status, placements);
+        
+        if ([placements count] > 0) {
+            Placement *placement = placements[0];
+            [placement getImageView:^(UIImageView *imageView) {
+                CGRect imageViewFrame = imageView.frame;
+                imageViewFrame.origin.y = self.view.frame.size.height - imageViewFrame.size.height - 10;
+                imageViewFrame.origin.x = (self.view.frame.size.width - imageViewFrame.size.width) / 2;
+                imageView.frame = imageViewFrame;
+                [self.view addSubview:imageView];
+            }];
+        }
+        
     } failure:^(NSNumber * _Nullable statusCode, NSString * _Nullable responseBody, NSError * _Nullable error) {
         // :)
     }];

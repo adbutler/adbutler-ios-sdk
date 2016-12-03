@@ -9,6 +9,7 @@
 import Foundation
 
 public extension Placement {
+    @objc(getImageView:)
     public func getImageView(completionHandler complete: @escaping (UIImageView) -> Void) {
         guard let imageUrl = imageUrl, let url = URL(string: imageUrl) else {
             return
