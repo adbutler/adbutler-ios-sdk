@@ -33,6 +33,7 @@ class ViewController: UIViewController {
                     imageViewFrame.origin.x = (self.view.frame.width - imageViewFrame.size.width) / 2
                     imageView.frame = imageViewFrame
                     self.view.addSubview(imageView)
+                    placements[0].recordImpression()
                 }
             case .badRequest(let statusCode, let responseBody):
                 print(statusCode ?? -1)

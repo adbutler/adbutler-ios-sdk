@@ -28,6 +28,7 @@
                 imageViewFrame.origin.x = (self.view.frame.size.width - imageViewFrame.size.width) / 2;
                 imageView.frame = imageViewFrame;
                 [self.view addSubview:imageView];
+                [placement recordImpression];
             }];
         }
         
