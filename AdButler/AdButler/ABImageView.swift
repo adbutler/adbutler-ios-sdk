@@ -19,6 +19,6 @@ public class ABImageView: UIImageView {
     }
     
     func tap() {
-        placement?.recordImpression()
+        placement?.recordClick()
     }
 }
