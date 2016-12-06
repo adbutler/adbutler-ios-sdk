@@ -8,18 +8,31 @@
 
 import Foundation
 
+/// Models the `Placement` with all its properties.
 @objc public class Placement: NSObject {
+    /// The unique ID of the banner returned.
     public let bannerId: Int
+    /// A pass-through click redirect URL.
     public let redirectUrl: String?
+    /// The image banner URL.
     public let imageUrl: String?
+    /// The width of this placement.
     public let width: Int
+    /// The height of this placement.
     public let height: Int
+    /// Alternate text for screen readers on the web.
     public let altText: String
+    /// An HTML target attribute.
     public let target: String
+    /// An optional user-specified tracking pixel URL.
     public let trackingPixel: String?
+    /// Used to record an impression for this request.
     public let accupixelUrl: String?
+    /// Contains a zone URL to request a new ad.
     public let refreshUrl: String?
+    /// The user-specified delay between refresh URL requests.
     public let refreshTime: String?
+    /// The HTML markup of an ad request.
     public let body: String?
     
     public init(bannerId: Int, redirectUrl: String? = nil, imageUrl: String? = nil, width: Int, height: Int, altText: String, target: String, trackingPixel: String? = nil, accupixelUrl: String? = nil, refreshUrl: String? = nil, refreshTime: String? = nil, body: String? = nil) {
