@@ -1,0 +1,4 @@
+author: SparkLIT
+clean: true
+module: AdButler
+xcodebuild_arguments: [-workspace,AdButler.xcworkspace,-scheme,AdButler]
