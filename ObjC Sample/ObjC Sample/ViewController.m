@@ -17,7 +17,7 @@
 
 - (IBAction)requestPlacementTapped:(id)sender {
     PlacementRequestConfig *config = [[PlacementRequestConfig alloc] initWithAccountId:153105 zoneId:214764 width:300 height:250 keywords:@[@"sample2"] click:nil];
-    [AdButler requestPlacementWith:config success:^(NSString * _Nonnull status, NSArray<Placement *> * _Nonnull placements) {
+    [AdButler requestPlacementWithConfig:config success:^(NSString * _Nonnull status, NSArray<Placement *> * _Nonnull placements) {
         NSLog(@"status: %@\nplacements: %@", status, placements);
         
         if ([placements count] > 0) {
@@ -42,7 +42,7 @@
                                                  [[PlacementRequestConfig alloc] initWithAccountId:153105 zoneId:214764 width:300 height:250 keywords:@[] click:nil],
                                                  [[PlacementRequestConfig alloc] initWithAccountId:153105 zoneId:214764 width:300 height:250 keywords:@[@"sample2"] click:nil],
                                                  ];
-    [AdButler requestPlacementsWith:configs success:^(NSString * _Nonnull status, NSArray<Placement *> * _Nonnull placements) {
+    [AdButler requestPlacementsWithConfigs:configs success:^(NSString * _Nonnull status, NSArray<Placement *> * _Nonnull placements) {
         NSLog(@"status: %@\nplacements: %@", status, placements);
     } failure:^(NSNumber * _Nullable statusCode, NSString * _Nullable responseBody, NSError * _Nullable error) {
         // :)
@@ -50,7 +50,7 @@
 }
 
 - (IBAction)requestPixelTapped:(id)sender {
-    [AdButler requestPixelWith:[NSURL URLWithString:@"https://servedbyadbutler.com/default_banner.gif"]];
+    [AdButler requestPixelWithURL:[NSURL URLWithString:@"https://servedbyadbutler.com/default_banner.gif"]];
 }
 
 - (IBAction)recordImpressionTapped:(id)sender {

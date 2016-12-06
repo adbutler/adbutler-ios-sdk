@@ -30,11 +30,11 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
     /**
      Requests multiple placements with explicit success and failure callbacks. Provided for Objective-C compatibility.
      
-     - Parameter with: the configurations, each used for one placement respectively.
+     - Parameter configs: the configurations, each used for one placement respectively.
      - Parameter success: a success callback block. The block will be given a `String` status and a list of `Placement`s.
      - Parameter failure: a failure callback block with status code, response body, and error.
      */
-    @objc public static func requestPlacements(with configs: [PlacementRequestConfig], success: @escaping (String, [Placement]) -> Void, failure: @escaping (NSNumber?, String?, Error?) -> Void) {
+    @objc public static func requestPlacements(configs: [PlacementRequestConfig], success: @escaping (String, [Placement]) -> Void, failure: @escaping (NSNumber?, String?, Error?) -> Void) {
         requestPlacements(with: configs) { $0.objcCallbacks(success: success, failure: failure) }
     }
     
@@ -53,11 +53,11 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
     /**
      Requests a single placement with explicit success and failure callbacks. Provided for Objective-C compatibility.
      
-     - Parameter with: the configuration used for requesting one placement.
+     - Parameter config: the configuration used for requesting one placement.
      - Parameter success: a success callback block. The block will be given a `String` status and a list of `Placement`s.
      - Parameter failure: a failure callback block with status code, response body, and error.
      */
-    @objc public static func requestPlacement(with config: PlacementRequestConfig, success: @escaping (String, [Placement]) -> Void, failure: @escaping (NSNumber?, String?, Error?) -> Void) {
+    @objc public static func requestPlacement(config: PlacementRequestConfig, success: @escaping (String, [Placement]) -> Void, failure: @escaping (NSNumber?, String?, Error?) -> Void) {
         requestPlacement(with: config) { $0.objcCallbacks(success: success, failure: failure) }
     }
     
@@ -66,7 +66,8 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
      
      - Parameter with: the `URL` for this pixel.
      */
-    @objc public static func requestPixel(with url: URL) {
+    @objc(requestPixelWithURL:)
+    public static func requestPixel(with url: URL) {
         let session = Session().urlSession
         let task = session.dataTask(with: url) { (_, _, error) in
             if error != nil {
