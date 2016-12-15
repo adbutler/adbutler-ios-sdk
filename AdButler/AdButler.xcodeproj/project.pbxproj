@@ -24,6 +24,7 @@
 		FA9FAD5C1DD4052F00250853 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FAD5B1DD4052F00250853 /* Response.swift */; };
 		FACD0F051E023F2B007FAC39 /* AdButlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACD0F041E023F2B007FAC39 /* AdButlerTests.swift */; };
 		FACD0F071E023F2B007FAC39 /* AdButler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9FACA51DD2B8BD00250853 /* AdButler.framework */; };
+		FACD0F0E1E023FA9007FAC39 /* CanaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACD0F0D1E023FA9007FAC39 /* CanaryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		FACD0F021E023F2B007FAC39 /* AdButlerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdButlerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FACD0F041E023F2B007FAC39 /* AdButlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdButlerTests.swift; sourceTree = "<group>"; };
 		FACD0F061E023F2B007FAC39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FACD0F0D1E023FA9007FAC39 /* CanaryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanaryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			children = (
 				FACD0F041E023F2B007FAC39 /* AdButlerTests.swift */,
 				FACD0F061E023F2B007FAC39 /* Info.plist */,
+				FACD0F0D1E023FA9007FAC39 /* CanaryTests.swift */,
 			);
 			path = AdButlerTests;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FACD0F051E023F2B007FAC39 /* AdButlerTests.swift in Sources */,
+				FACD0F0E1E023FA9007FAC39 /* CanaryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
