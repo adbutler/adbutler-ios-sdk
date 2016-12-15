@@ -22,7 +22,19 @@
 		FA9FACB31DD2C05100250853 /* AdButler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FACB21DD2C05100250853 /* AdButler.swift */; };
 		FA9FAD5A1DD4020B00250853 /* Placement.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FAD591DD4020B00250853 /* Placement.swift */; };
 		FA9FAD5C1DD4052F00250853 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FAD5B1DD4052F00250853 /* Response.swift */; };
+		FACD0F051E023F2B007FAC39 /* AdButlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACD0F041E023F2B007FAC39 /* AdButlerTests.swift */; };
+		FACD0F071E023F2B007FAC39 /* AdButler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9FACA51DD2B8BD00250853 /* AdButler.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FACD0F081E023F2B007FAC39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA9FAC9C1DD2B8BD00250853 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA9FACA41DD2B8BD00250853;
+			remoteInfo = AdButler;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		FA2013861DD6818C00B27D55 /* RequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
@@ -42,6 +54,9 @@
 		FA9FACB21DD2C05100250853 /* AdButler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdButler.swift; sourceTree = "<group>"; };
 		FA9FAD591DD4020B00250853 /* Placement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Placement.swift; sourceTree = "<group>"; };
 		FA9FAD5B1DD4052F00250853 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		FACD0F021E023F2B007FAC39 /* AdButlerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdButlerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FACD0F041E023F2B007FAC39 /* AdButlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdButlerTests.swift; sourceTree = "<group>"; };
+		FACD0F061E023F2B007FAC39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +64,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FACD0EFF1E023F2B007FAC39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FACD0F071E023F2B007FAC39 /* AdButler.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				FA9FACA71DD2B8BD00250853 /* AdButler */,
+				FACD0F031E023F2B007FAC39 /* AdButlerTests */,
 				FA9FACA61DD2B8BD00250853 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				FA9FACA51DD2B8BD00250853 /* AdButler.framework */,
+				FACD0F021E023F2B007FAC39 /* AdButlerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,6 +141,15 @@
 				FA90E31B1DF320C40060592A /* Placement+ImageView.swift */,
 			);
 			path = AdButler;
+			sourceTree = "<group>";
+		};
+		FACD0F031E023F2B007FAC39 /* AdButlerTests */ = {
+			isa = PBXGroup;
+			children = (
+				FACD0F041E023F2B007FAC39 /* AdButlerTests.swift */,
+				FACD0F061E023F2B007FAC39 /* Info.plist */,
+			);
+			path = AdButlerTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,18 +184,41 @@
 			productReference = FA9FACA51DD2B8BD00250853 /* AdButler.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		FACD0F011E023F2B007FAC39 /* AdButlerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FACD0F0C1E023F2B007FAC39 /* Build configuration list for PBXNativeTarget "AdButlerTests" */;
+			buildPhases = (
+				FACD0EFE1E023F2B007FAC39 /* Sources */,
+				FACD0EFF1E023F2B007FAC39 /* Frameworks */,
+				FACD0F001E023F2B007FAC39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FACD0F091E023F2B007FAC39 /* PBXTargetDependency */,
+			);
+			name = AdButlerTests;
+			productName = AdButlerTests;
+			productReference = FACD0F021E023F2B007FAC39 /* AdButlerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		FA9FAC9C1DD2B8BD00250853 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = AdButler;
 				TargetAttributes = {
 					FA9FACA41DD2B8BD00250853 = {
 						CreatedOnToolsVersion = 8.1;
 						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
+					};
+					FACD0F011E023F2B007FAC39 = {
+						CreatedOnToolsVersion = 8.2;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -179,12 +236,20 @@
 			projectRoot = "";
 			targets = (
 				FA9FACA41DD2B8BD00250853 /* AdButler */,
+				FACD0F011E023F2B007FAC39 /* AdButlerTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FA9FACA31DD2B8BD00250853 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FACD0F001E023F2B007FAC39 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -215,7 +280,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FACD0EFE1E023F2B007FAC39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FACD0F051E023F2B007FAC39 /* AdButlerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FACD0F091E023F2B007FAC39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA9FACA41DD2B8BD00250853 /* AdButler */;
+			targetProxy = FACD0F081E023F2B007FAC39 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		FA9FACAB1DD2B8BD00250853 /* Debug */ = {
@@ -356,6 +437,32 @@
 			};
 			name = Release;
 		};
+		FACD0F0A1E023F2B007FAC39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				INFOPLIST_FILE = AdButlerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sparklit.adbutler.AdButlerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		FACD0F0B1E023F2B007FAC39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				INFOPLIST_FILE = AdButlerTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sparklit.adbutler.AdButlerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -376,6 +483,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		FACD0F0C1E023F2B007FAC39 /* Build configuration list for PBXNativeTarget "AdButlerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FACD0F0A1E023F2B007FAC39 /* Debug */,
+				FACD0F0B1E023F2B007FAC39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
