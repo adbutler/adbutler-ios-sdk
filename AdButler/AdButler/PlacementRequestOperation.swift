@@ -9,13 +9,15 @@
 import Foundation
 
 class PlacementRequestOperation: AsynchronousOperation {
+    private let _session: URLSession
     private let _baseUrl: String
     private let _config: PlacementRequestConfig
     private let _complete: (Response) -> Void
     
     private var _task: URLSessionDataTask?
     
-    init(baseUrl: String, config: PlacementRequestConfig, completionHandler: @escaping (Response) -> Void) {
+    init(session: URLSession, baseUrl: String, config: PlacementRequestConfig, completionHandler: @escaping (Response) -> Void) {
+        _session = session
         _baseUrl = baseUrl
         _config = config
         _complete = completionHandler
@@ -52,7 +54,7 @@ class PlacementRequestOperation: AsynchronousOperation {
             }
         }
         
-        return Session().urlSession.dataTask(with: request) { (data, response, error) in
+        return _session.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 handleError(error: error)
             } else if let httpResponse = response as? HTTPURLResponse, let data = data, httpResponse.statusCode == 200 {

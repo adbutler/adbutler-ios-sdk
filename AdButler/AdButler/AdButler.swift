@@ -16,6 +16,8 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
         super.init()
     }
     
+    static var session = Session().urlSession
+    
     /**
      Requests multiple placements.
      
@@ -23,7 +25,7 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
      - Parameter completionHandler: a callback block that you provide to handle the response. The block will be given a `Response` object.
      */
     public static func requestPlacements(with configs: [PlacementRequestConfig], completionHandler: @escaping (Response) -> Void) {
-        let requestManager = RequestManager(baseUrl: baseUrl, configs: configs, completionHandler: completionHandler)
+        let requestManager = RequestManager(session: session, baseUrl: baseUrl, configs: configs, completionHandler: completionHandler)
         requestManager.request()
     }
     
@@ -45,7 +47,7 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
      - Parameter completionHandler: a callback block that you provide to handle the response. The block will be given a `Response` object.
      */
     public static func requestPlacement(with config: PlacementRequestConfig, completionHandler: @escaping (Response) -> Void) {
-        let requestManager = RequestManager(baseUrl: baseUrl, config: config, completionHandler: completionHandler)
+        let requestManager = RequestManager(session: session, baseUrl: baseUrl, config: config, completionHandler: completionHandler)
         requestManager.request()
     }
     
@@ -68,7 +70,6 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
      */
     @objc(requestPixelWithURL:)
     public static func requestPixel(with url: URL) {
-        let session = Session().urlSession
         let task = session.dataTask(with: url) { (_, _, error) in
             if error != nil {
                 print("Error requeseting a pixel with url \(url.absoluteString)")
