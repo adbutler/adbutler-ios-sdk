@@ -15,6 +15,7 @@
 		FA2013921DD6BA8300B27D55 /* UIDevice+AdButler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2013911DD6BA8300B27D55 /* UIDevice+AdButler.swift */; };
 		FA2013B61DD7BC2E00B27D55 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2013B51DD7BC2E00B27D55 /* Session.swift */; };
 		FA265B841DE28EFA00E5080D /* Placement+Records.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA265B831DE28EFA00E5080D /* Placement+Records.swift */; };
+		FA78B6371E0790AF003319CC /* TestSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA78B6361E0790AF003319CC /* TestSession.swift */; };
 		FA90E31C1DF320C40060592A /* Placement+ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90E31B1DF320C40060592A /* Placement+ImageView.swift */; };
 		FA90E31E1DF346300060592A /* ABImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA90E31D1DF346300060592A /* ABImageView.swift */; };
 		FA9FACAA1DD2B8BD00250853 /* AdButler.h in Headers */ = {isa = PBXBuildFile; fileRef = FA9FACA81DD2B8BD00250853 /* AdButler.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -46,6 +47,7 @@
 		FA2013911DD6BA8300B27D55 /* UIDevice+AdButler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+AdButler.swift"; sourceTree = "<group>"; };
 		FA2013B51DD7BC2E00B27D55 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		FA265B831DE28EFA00E5080D /* Placement+Records.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Placement+Records.swift"; sourceTree = "<group>"; };
+		FA78B6361E0790AF003319CC /* TestSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestSession.swift; sourceTree = "<group>"; };
 		FA90E31B1DF320C40060592A /* Placement+ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Placement+ImageView.swift"; sourceTree = "<group>"; };
 		FA90E31D1DF346300060592A /* ABImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABImageView.swift; sourceTree = "<group>"; };
 		FA9FACA51DD2B8BD00250853 /* AdButler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AdButler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,9 +150,10 @@
 		FACD0F031E023F2B007FAC39 /* AdButlerTests */ = {
 			isa = PBXGroup;
 			children = (
-				FACD0F041E023F2B007FAC39 /* AdButlerTests.swift */,
 				FACD0F061E023F2B007FAC39 /* Info.plist */,
 				FACD0F0D1E023FA9007FAC39 /* CanaryTests.swift */,
+				FACD0F041E023F2B007FAC39 /* AdButlerTests.swift */,
+				FA78B6361E0790AF003319CC /* TestSession.swift */,
 			);
 			path = AdButlerTests;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FACD0F051E023F2B007FAC39 /* AdButlerTests.swift in Sources */,
+				FA78B6371E0790AF003319CC /* TestSession.swift in Sources */,
 				FACD0F0E1E023FA9007FAC39 /* CanaryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,6 +499,7 @@
 				FACD0F0B1E023F2B007FAC39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
