@@ -1,5 +1,7 @@
 # adbutler-ios-sdk
 
+[![Travis CI Status](https://api.travis-ci.org/sparklit/adbutler-ios-sdk.svg?branch=master)](https://travis-ci.org/sparklit/adbutler-ios-sdk)
+
 ## Requirements
 
 - iOS 9.0+
