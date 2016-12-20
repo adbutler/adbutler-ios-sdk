@@ -79,7 +79,7 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
     }
 }
 
-fileprivate extension Response {
+extension Response {
     func objcCallbacks(success: @escaping (String, [Placement]) -> Void, failure: @escaping (NSNumber?, String?, Error?) -> Void) {
         switch self {
         case .success(let status, let placements):

@@ -23,6 +23,7 @@
 		FA9FACB31DD2C05100250853 /* AdButler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FACB21DD2C05100250853 /* AdButler.swift */; };
 		FA9FAD5A1DD4020B00250853 /* Placement.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FAD591DD4020B00250853 /* Placement.swift */; };
 		FA9FAD5C1DD4052F00250853 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9FAD5B1DD4052F00250853 /* Response.swift */; };
+		FAC2BFE41E08D89F0054C7AF /* ResponseObjCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC2BFE31E08D89F0054C7AF /* ResponseObjCTests.swift */; };
 		FACD0F051E023F2B007FAC39 /* AdButlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACD0F041E023F2B007FAC39 /* AdButlerTests.swift */; };
 		FACD0F071E023F2B007FAC39 /* AdButler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9FACA51DD2B8BD00250853 /* AdButler.framework */; };
 		FACD0F0E1E023FA9007FAC39 /* CanaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACD0F0D1E023FA9007FAC39 /* CanaryTests.swift */; };
@@ -57,6 +58,7 @@
 		FA9FACB21DD2C05100250853 /* AdButler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdButler.swift; sourceTree = "<group>"; };
 		FA9FAD591DD4020B00250853 /* Placement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Placement.swift; sourceTree = "<group>"; };
 		FA9FAD5B1DD4052F00250853 /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		FAC2BFE31E08D89F0054C7AF /* ResponseObjCTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseObjCTests.swift; sourceTree = "<group>"; };
 		FACD0F021E023F2B007FAC39 /* AdButlerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdButlerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FACD0F041E023F2B007FAC39 /* AdButlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdButlerTests.swift; sourceTree = "<group>"; };
 		FACD0F061E023F2B007FAC39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				FACD0F0D1E023FA9007FAC39 /* CanaryTests.swift */,
 				FACD0F041E023F2B007FAC39 /* AdButlerTests.swift */,
 				FA78B6361E0790AF003319CC /* TestSession.swift */,
+				FAC2BFE31E08D89F0054C7AF /* ResponseObjCTests.swift */,
 			);
 			path = AdButlerTests;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			files = (
 				FACD0F051E023F2B007FAC39 /* AdButlerTests.swift in Sources */,
 				FA78B6371E0790AF003319CC /* TestSession.swift in Sources */,
+				FAC2BFE41E08D89F0054C7AF /* ResponseObjCTests.swift in Sources */,
 				FACD0F0E1E023FA9007FAC39 /* CanaryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
