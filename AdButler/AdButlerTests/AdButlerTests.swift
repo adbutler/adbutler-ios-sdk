@@ -66,7 +66,7 @@ class AdButlerTests: XCTestCase {
     
     func testRequestMultiplePlacements() {
         AdButler.session = TestSession.success(placement2).session
-        let config = PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250)
+        let config = PlacementRequestConfig(accountId: 153105, zoneId: 214764, width: 300, height: 250, keywords: ["keyword2"], click: "foo")
         let expct = expectation(description: "expect to get a response")
         AdButler.requestPlacements(with: [config, config]) { (response) in
             expct.fulfill()
@@ -138,5 +138,31 @@ class AdButlerTests: XCTestCase {
             XCTAssertTrue(error is TestError)
         }
         waitForExpectations(timeout: 3)
+    }
+    
+    func testRequestPixel() {
+        let pixelSession = TestSession.requestPixel.session as! RequestPixelSession
+        XCTAssertFalse(pixelSession.isResumeCalled)
+        AdButler.session = pixelSession
+        AdButler.requestPixel(with: URL(string: "https://servedbyadbutler.com")!)
+        XCTAssertTrue(pixelSession.isResumeCalled)
+    }
+    
+    func testRecordImpression() {
+        let pixelSession = TestSession.requestPixel.session as! RequestPixelSession
+        XCTAssertFalse(pixelSession.isResumeCalled)
+        AdButler.session = pixelSession
+        let placement = Placement(from: placement1)
+        placement?.recordImpression()
+        XCTAssertTrue(pixelSession.isResumeCalled)
+    }
+    
+    func testRecordClick() {
+        let pixelSession = TestSession.requestPixel.session as! RequestPixelSession
+        XCTAssertFalse(pixelSession.isResumeCalled)
+        AdButler.session = pixelSession
+        let placement = Placement(from: placement2)
+        placement?.recordClick()
+        XCTAssertTrue(pixelSession.isResumeCalled)
     }
 }

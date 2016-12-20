@@ -17,6 +17,7 @@ enum TestSession {
     case badRequest(Int)
     case invalidJson
     case requestError
+    case requestPixel
 }
 
 extension TestSession {
@@ -30,6 +31,8 @@ extension TestSession {
             return InvalidJSONSession()
         case .requestError:
             return RequestErrorSession()
+        case .requestPixel:
+            return RequestPixelSession()
         }
     }
 }
@@ -158,3 +161,33 @@ class RequestErrorSessionDataTask : URLSessionDataTask {
         _completion(nil, response, TestError())
     }
 }
+
+class RequestPixelSession : URLSession {
+    var isResumeCalled = false
+    
+    override func dataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        return RequestPixelSessionDataTask(url: url, session: self, completion: completionHandler)
+    }
+    
+    override func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        return RequestPixelSessionDataTask(url: request.url!, session: self, completion: completionHandler)
+    }
+}
+
+class RequestPixelSessionDataTask : URLSessionDataTask {
+    private let _url: URL
+    private let _session: RequestPixelSession
+    private let _completion: TaskCompletion
+    
+    init(url: URL, session: RequestPixelSession, completion: @escaping TaskCompletion) {
+        _url = url
+        _session = session
+        _completion = completion
+    }
+    
+    override func resume() {
+        _session.isResumeCalled = true
+        _completion(nil, nil, TestError())
+    }
+}
+
