@@ -6,7 +6,7 @@
 //  Copyright © 2016 AdButler. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public class ABImageView: UIImageView {
     var placement: Placement?
@@ -20,5 +20,8 @@ public class ABImageView: UIImageView {
     
     func tap() {
         placement?.recordClick()
+        if let urlString = placement?.redirectUrl, let url = URL(string: urlString) {
+            UIApplication.shared.open(url)
+        }
     }
 }
