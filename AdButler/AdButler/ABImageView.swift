@@ -19,7 +19,6 @@ public class ABImageView: UIImageView {
     }
     
     func tap() {
-        placement?.recordClick()
         if let urlString = placement?.redirectUrl, let url = URL(string: urlString) {
             UIApplication.shared.open(url)
         }
