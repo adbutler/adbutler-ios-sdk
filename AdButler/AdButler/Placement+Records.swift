@@ -13,10 +13,9 @@ public extension Placement {
     public func recordImpression() {
         if let accupixelUrl = self.accupixelUrl.flatMap({ URL(string: $0) }) {
             AdButler.requestPixel(with: accupixelUrl)
-        } else if let trackingPixel = self.trackingPixel.flatMap({ URL(string: $0) }) {
+        }
+        if let trackingPixel = self.trackingPixel.flatMap({ URL(string: $0) }) {
             AdButler.requestPixel(with: trackingPixel)
-        } else {
-            print("Cannot construct a valid impression URL.")
         }
     }
     
