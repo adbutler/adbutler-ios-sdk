@@ -1,6 +1,6 @@
 # adbutler-ios-sdk
 
-[![Travis CI Status](https://api.travis-ci.org/sparklit/adbutler-ios-sdk.svg?branch=master)](https://travis-ci.org/sparklit/adbutler-ios-sdk)
+[![Travis CI Status](https://api.travis-ci.org/adbutler/adbutler-ios-sdk.svg?branch=master)](https://travis-ci.org/adbutler/adbutler-ios-sdk)
 
 ## Requirements
 
@@ -27,7 +27,7 @@ end
 If you want to be on the latest master branch:
 
 ```ruby
-pod 'adbutler-ios-sdk', github: 'sparklit/adbutler-ios-sdk', branch: 'master'
+pod 'adbutler-ios-sdk', github: 'adbutler/adbutler-ios-sdk', branch: 'master'
 ```
 
 Then, run `pod install` to download the code and integrate it into your project.
@@ -37,13 +37,13 @@ Then, run `pod install` to download the code and integrate it into your project.
 To integrate adbutler-ios-sdk into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ruby
-github "sparklit/adbutler-ios-sdk" ~> 1.0.2
+github "adbutler/adbutler-ios-sdk" ~> 1.0.2
 ```
 
 If you want to be on the latest master branch:
 
 ```ruby
-github "sparklit/adbutler-ios-sdk" "master"
+github "adbutler/adbutler-ios-sdk" "master"
 ```
 
 Then, run `carthage update` to build the framework and drag the built `AdButler.framework` into your Xcode project.
@@ -146,4 +146,4 @@ Please check out the `Swift Sample` and `ObjC Sample` projects inside this repos
 
 # License
 
-This SDK is released under the Apache 2.0 license. See [LICENSE](https://github.com/sparklit/adbutler-ios-sdk/tree/master/LICENSE) for more information.
+This SDK is released under the Apache 2.0 license. See [LICENSE](https://github.com/adbutler/adbutler-ios-sdk/tree/master/LICENSE) for more information.
