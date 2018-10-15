@@ -20,7 +20,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'adbutler-ios-sdk', '~> 1.0.2'
+    pod 'AdButler', '~> 1.0.1'
 end
 ```
 
@@ -86,10 +86,10 @@ which is a Swift enum that will indicate success or other status for the request
 ```swift
 AdButler.requestPlacements(with: configs) { response in
   switch response {
-  case .success(let placements): // ...
+  case .success(let responseStatus, let placements): // ...
   case .badRequest(let httpStatusCode, let responseBody): //...
-  case .badResponse(let responseBody): //...
-  case .error(let error): //..
+  case .invalidJson(let responseStr): //...
+  case .requestError(let error): //..
   }
 }
 ```
