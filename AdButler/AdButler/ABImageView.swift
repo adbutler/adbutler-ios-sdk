@@ -18,7 +18,7 @@ public class ABImageView: UIImageView {
         addGestureRecognizer(tapGesture)
     }
     
-    func tap() {
+    @objc func tap() {
         if let urlString = placement?.redirectUrl, let url = URL(string: urlString) {
             UIApplication.shared.open(url)
         }
