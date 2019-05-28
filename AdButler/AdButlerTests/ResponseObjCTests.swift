@@ -15,9 +15,9 @@ class ResponseObjCTests: XCTestCase {
     func testSuccessCallback() {
         let expct = expectation(description: "expect to get a callback")
         let resp = Response.success(.noAds, [])
-        resp.objcCallbacks(success: { _ in
+        resp.objcCallbacks(success: { _,_  in
             expct.fulfill()
-        }, failure: { _ in
+        }, failure: { _,_,_  in
             XCTFail()
         })
         waitForExpectations(timeout: 3)
@@ -26,9 +26,9 @@ class ResponseObjCTests: XCTestCase {
     func testBadRequest() {
         let expct = expectation(description: "expect to get a callback")
         let resp = Response.badRequest(0, "")
-        resp.objcCallbacks(success: { _ in
+        resp.objcCallbacks(success: { _,_  in
             XCTFail()
-        }, failure: { _ in
+        }, failure: { _,_,_  in
             expct.fulfill()
         })
         waitForExpectations(timeout: 3)
@@ -37,9 +37,9 @@ class ResponseObjCTests: XCTestCase {
     func testInvalidJSON() {
         let expct = expectation(description: "expect to get a callback")
         let resp = Response.invalidJson("")
-        resp.objcCallbacks(success: { _ in
+        resp.objcCallbacks(success: { _,_  in
             XCTFail()
-        }, failure: { _ in
+        }, failure: { _,_,_  in
             expct.fulfill()
         })
         waitForExpectations(timeout: 3)
@@ -48,9 +48,9 @@ class ResponseObjCTests: XCTestCase {
     func testRequestError() {
         let expct = expectation(description: "expect to get a callback")
         let resp = Response.requestError(TestError())
-        resp.objcCallbacks(success: { _ in
+        resp.objcCallbacks(success: { _,_  in
             XCTFail()
-        }, failure: { _ in
+        }, failure: { _,_,_  in
             expct.fulfill()
         })
         waitForExpectations(timeout: 3)
