@@ -9,4 +9,5 @@ Pod::Spec.new do |s|
   s.source_files = 'AdButler/AdButler/*.swift'
   s.platform     = :ios, '10.2'
   s.frameworks = 'Foundation'
+  s.swift_version = '5'
 end
