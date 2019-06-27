@@ -28,14 +28,12 @@ public extension Placement {
             guard let httpResponse = response as? HTTPURLResponse, let data = data, httpResponse.statusCode == 200 else {
                 return
             }
-            
-            let image = UIImage(data: data)
-            let imageView = ABImageView(image: image)
-            imageView.placement = self
-            
             DispatchQueue.main.async {
-                complete(imageView)
+                let image = UIImage(data: data)
+                let imageView = ABImageView(image: image)
+                imageView.placement = self
                 imageView.setupGestures()
+                complete(imageView)
             }
         }
         task.resume()
