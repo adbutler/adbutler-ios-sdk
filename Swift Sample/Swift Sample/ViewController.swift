@@ -101,7 +101,7 @@ class ViewController: UIViewController {
 
 extension Placement {
     var debugString: String {
-        return "bannerId: \(bannerId), redirectUrl: \(redirectUrl), imageUrl: \(imageUrl), width: \(width), height: \(height), altText: \(altText), target: \(target), trackingPixel: \(trackingPixel), accupixelUrl: \(accupixelUrl), refreshUrl: \(refreshUrl), refreshTime: \(refreshTime), body: \(body)"
+        return "bannerId: \(bannerId), redirectUrl: \(redirectUrl ?? ""), imageUrl: \(imageUrl ?? ""), width: \(width), height: \(height), altText: \(altText), target: \(target), trackingPixel: \(trackingPixel ?? ""), accupixelUrl: \(accupixelUrl ?? ""), refreshUrl: \(refreshUrl ?? ""), refreshTime: \(refreshTime ?? ""), body: \(body ?? "")"
     }
 }
 

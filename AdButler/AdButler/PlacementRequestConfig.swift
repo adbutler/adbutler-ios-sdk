@@ -34,7 +34,7 @@ import Foundation
 }
 
 public extension PlacementRequestConfig {
-    public var queryString: String {
+    var queryString: String {
         var query = ";ID=\(accountId);size=\(width)x\(height);setID=\(zoneId)"
         if !keywords.isEmpty {
             let keywordsString = keywords.joined(separator: ",")
