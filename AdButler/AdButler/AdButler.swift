@@ -8,7 +8,7 @@
 
 import Foundation
 
-fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
+fileprivate let baseUrl = "http://servedbyadbutler.com/adserve"
 
 /// The class used to make requests against the AdButler API.
 @objc public class AdButler: NSObject {
