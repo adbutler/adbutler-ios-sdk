@@ -20,7 +20,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'AdButler', '~> 1.0.1'
+    pod 'AdButler', '~> 1.0.6'
 end
 ```
 
@@ -37,7 +37,7 @@ Then, run `pod install` to download the code and integrate it into your project.
 To integrate adbutler-ios-sdk into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ruby
-github "adbutler/adbutler-ios-sdk" ~> 1.0.2
+github "adbutler/adbutler-ios-sdk" ~> 1.0.6
 ```
 
 If you want to be on the latest master branch:
