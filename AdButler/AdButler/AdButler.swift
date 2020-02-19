@@ -8,7 +8,7 @@
 
 import Foundation
 
-fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
+//fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
 
 /// The class used to make requests against the AdButler API.
 @objc public class AdButler: NSObject {
@@ -16,7 +16,12 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
         super.init()
     }
     
+    public static func getBaseUrl() -> String {
+        return "https://" + AdButler.apiHostname + "/adserve"
+    }
+    
     static var session = Session().urlSession
+    public static var apiHostname = "servedbyadbutler.com"
     
     /**
      Requests multiple placements.
@@ -25,7 +30,7 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
      - Parameter completionHandler: a callback block that you provide to handle the response. The block will be given a `Response` object.
      */
     public static func requestPlacements(with configs: [PlacementRequestConfig], completionHandler: @escaping (Response) -> Void) {
-        let requestManager = RequestManager(session: session, baseUrl: baseUrl, configs: configs, completionHandler: completionHandler)
+        let requestManager = RequestManager(session: session, baseUrl: AdButler.getBaseUrl(), configs: configs, completionHandler: completionHandler)
         requestManager.request()
     }
     
@@ -47,7 +52,7 @@ fileprivate let baseUrl = "https://servedbyadbutler.com/adserve"
      - Parameter completionHandler: a callback block that you provide to handle the response. The block will be given a `Response` object.
      */
     public static func requestPlacement(with config: PlacementRequestConfig, completionHandler: @escaping (Response) -> Void) {
-        let requestManager = RequestManager(session: session, baseUrl: baseUrl, config: config, completionHandler: completionHandler)
+        let requestManager = RequestManager(session: session, baseUrl: AdButler.getBaseUrl(), config: config, completionHandler: completionHandler)
         requestManager.request()
     }
     
