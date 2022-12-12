@@ -21,7 +21,7 @@ import Foundation
     /// The height of this placement.
     public let height: Int
     /// Alternate text for screen readers on the web.
-    public let altText: String
+    public let altText: String?
     /// An HTML target attribute.
     public let target: String
     /// An optional user-specified tracking pixel URL.
@@ -34,8 +34,12 @@ import Foundation
     public let refreshTime: String?
     /// The HTML markup of an ad request.
     public let body: String?
+    /// Optional URL beacons for server to server events.
+    public let beacons: [[String: String]]?
+    /// Optional URL beacons for server to server events.
+    public let metadata: [[String: String]]?
     
-    public init(bannerId: Int, redirectUrl: String? = nil, imageUrl: String? = nil, width: Int, height: Int, altText: String, target: String, trackingPixel: String? = nil, accupixelUrl: String? = nil, refreshUrl: String? = nil, refreshTime: String? = nil, body: String? = nil) {
+    public init(bannerId: Int, redirectUrl: String? = nil, imageUrl: String? = nil, width: Int, height: Int, altText: String?, target: String, trackingPixel: String? = nil, accupixelUrl: String? = nil, refreshUrl: String? = nil, refreshTime: String? = nil, body: String? = nil, beacons: [[String: String]]? = nil, metadata: [[String: String]]? = nil) {
         self.bannerId = bannerId
         self.redirectUrl = redirectUrl
         self.imageUrl = imageUrl
@@ -48,18 +52,17 @@ import Foundation
         self.refreshUrl = refreshUrl
         self.refreshTime = refreshTime
         self.body = body
+        self.beacons = beacons
+        self.metadata = metadata
     }
 }
 
 public extension Placement {
-    convenience init?(from jsonDictionary: [String: String]) {
+    convenience init?(from jsonDictionary: [String: AnyObject]) {
         guard let bannerIdString = jsonDictionary["banner_id"],
-            let bannerId = Int(bannerIdString),
-            let widthString = jsonDictionary["width"],
-            let width = Int(widthString),
-            let heightString = jsonDictionary["height"],
-            let height = Int(heightString),
-            let altText = jsonDictionary["alt_text"],
+            let bannerId = Int(bannerIdString as! String),
+            let widthObj = jsonDictionary["width"],
+            let heightObj = jsonDictionary["height"],
             let target = jsonDictionary["target"] else {
                 return nil
         }
@@ -71,14 +74,31 @@ public extension Placement {
                 return nil
             }
         }
-        let redirectUrl = mapBlankToNil(jsonDictionary["redirect_url"])
-        let imageUrl = mapBlankToNil(jsonDictionary["image_url"])
-        let trackingPixel = mapBlankToNil(jsonDictionary["tracking_pixel"])
-        let accupixelUrl = mapBlankToNil(jsonDictionary["accupixel_url"])
-        let refreshUrl = mapBlankToNil(jsonDictionary["refresh_url"])
-        let refreshTime = mapBlankToNil(jsonDictionary["refresh_time"])
-        let body = mapBlankToNil(jsonDictionary["body"])
+        var width: Int!
+        var height: Int!
         
-        self.init(bannerId: bannerId, redirectUrl: redirectUrl, imageUrl: imageUrl, width: width, height: height, altText: altText, target: target, trackingPixel: trackingPixel, accupixelUrl: accupixelUrl, refreshUrl: refreshUrl, refreshTime: refreshTime, body: body)
+        if(widthObj is Int){
+            width = widthObj as? Int
+        }else if (widthObj is String){
+            width = Int(widthObj as! String)
+        }
+        if(heightObj is Int){
+            height = heightObj as? Int
+        }else if(heightObj is String){
+            height = Int(heightObj as! String)
+        }
+        
+        let redirectUrl = mapBlankToNil(jsonDictionary["redirect_url"] as? String)
+        let imageUrl = mapBlankToNil(jsonDictionary["image_url"] as? String)
+        let trackingPixel = mapBlankToNil(jsonDictionary["tracking_pixel"] as? String)
+        let accupixelUrl = mapBlankToNil(jsonDictionary["accupixel_url"] as? String)
+        let refreshUrl = mapBlankToNil(jsonDictionary["refresh_url"] as? String)
+        let refreshTime = mapBlankToNil(jsonDictionary["refresh_time"] as? String)
+        let body = mapBlankToNil(jsonDictionary["body"] as? String)
+        let altText = mapBlankToNil(jsonDictionary["altText"] as? String)
+        let beacons = jsonDictionary["beacons"] as? [[String: String]]
+        let metadata = jsonDictionary["metadata"] as? [[String: String]]
+        
+        self.init(bannerId: bannerId, redirectUrl: redirectUrl, imageUrl: imageUrl, width: width, height: height, altText: altText, target: target as! String, trackingPixel: trackingPixel, accupixelUrl: accupixelUrl, refreshUrl: refreshUrl, refreshTime: refreshTime, body: body, beacons: beacons, metadata: metadata)
     }
 }

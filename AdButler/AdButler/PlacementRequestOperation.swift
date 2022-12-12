@@ -41,7 +41,7 @@ class PlacementRequestOperation: AsynchronousOperation {
             if let json = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
                 let statusString = json["status"] as? String,
                 let status = ResponseStatus(rawValue: statusString),
-                let placementDictionary = json["placements"] as? [String: [String: String]] {
+                let placementDictionary = json["placements"] as? [String: [String: AnyObject]] {
                 var placements = [Placement]()
                 for (_, v) in placementDictionary {
                     if let placement = Placement(from: v) {
