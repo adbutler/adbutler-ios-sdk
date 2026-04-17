@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST version="4.2">
+  <Ad id="ad-001" sequence="1">
+    <InLine>
+      <AdSystem>AdButler</AdSystem>
+      <AdTitle>Sample Pre-Roll</AdTitle>
+      <Impression><![CDATA[https://servedbyadbutler.com/vast/impression?id=001]]></Impression>
+      <Impression><![CDATA[https://tracking.example.com/impression]]></Impression>
+      <Error><![CDATA[https://servedbyadbutler.com/vast/error?id=001]]></Error>
+      <Creatives>
+        <Creative>
+          <Linear skipoffset="00:00:05">
+            <Duration>00:00:30</Duration>
+            <MediaFiles>
+              <MediaFile type="video/mp4" width="1920" height="1080" delivery="progressive" bitrate="2000" codec="H.264">
+                <![CDATA[https://cdn.example.com/ads/preroll-1080p.mp4]]>
+              </MediaFile>
+              <MediaFile type="video/mp4" width="1280" height="720" delivery="progressive" bitrate="1200">
+                <![CDATA[https://cdn.example.com/ads/preroll-720p.mp4]]>
+              </MediaFile>
+              <MediaFile type="video/mp4" width="640" height="360" delivery="progressive" bitrate="600">
+                <![CDATA[https://cdn.example.com/ads/preroll-360p.mp4]]>
+              </MediaFile>
+              <MediaFile type="video/webm" width="1280" height="720" delivery="progressive" bitrate="1000">
+                <![CDATA[https://cdn.example.com/ads/preroll-720p.webm]]>
+              </MediaFile>
+            </MediaFiles>
+            <TrackingEvents>
+              <Tracking event="creativeView"><![CDATA[https://servedbyadbutler.com/vast/track?event=creativeView&id=001]]></Tracking>
+              <Tracking event="start"><![CDATA[https://servedbyadbutler.com/vast/track?event=start&id=001]]></Tracking>
+              <Tracking event="firstQuartile"><![CDATA[https://servedbyadbutler.com/vast/track?event=firstQuartile&id=001]]></Tracking>
+              <Tracking event="midpoint"><![CDATA[https://servedbyadbutler.com/vast/track?event=midpoint&id=001]]></Tracking>
+              <Tracking event="thirdQuartile"><![CDATA[https://servedbyadbutler.com/vast/track?event=thirdQuartile&id=001]]></Tracking>
+              <Tracking event="complete"><![CDATA[https://servedbyadbutler.com/vast/track?event=complete&id=001]]></Tracking>
+              <Tracking event="skip"><![CDATA[https://servedbyadbutler.com/vast/track?event=skip&id=001]]></Tracking>
+              <Tracking event="mute"><![CDATA[https://servedbyadbutler.com/vast/track?event=mute&id=001]]></Tracking>
+              <Tracking event="pause"><![CDATA[https://servedbyadbutler.com/vast/track?event=pause&id=001]]></Tracking>
+            </TrackingEvents>
+            <VideoClicks>
+              <ClickThrough><![CDATA[https://www.example.com/product?utm_source=adbutler]]></ClickThrough>
+              <ClickTracking><![CDATA[https://servedbyadbutler.com/vast/track?event=click&id=001]]></ClickTracking>
+            </VideoClicks>
+          </Linear>
+        </Creative>
+        <Creative>
+          <CompanionAds>
+            <Companion width="300" height="250">
+              <StaticResource creativeType="image/png"><![CDATA[https://cdn.example.com/ads/companion-300x250.png]]></StaticResource>
+              <CompanionClickThrough><![CDATA[https://www.example.com/companion-click]]></CompanionClickThrough>
+            </Companion>
+          </CompanionAds>
+        </Creative>
+      </Creatives>
+    </InLine>
+  </Ad>
+</VAST>
