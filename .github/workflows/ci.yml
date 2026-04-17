@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+
+      - name: Show build environment
+        run: |
+          xcodebuild -version
+          swift --version
+          xcrun simctl list devices available | grep iPhone | head -5
+
+      - name: Build SDK
+        run: |
+          xcodebuild build \
+            -scheme AdButlerSDK \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -configuration Debug \
+            | tail -20
+
+      - name: Run tests
+        run: |
+          xcodebuild test \
+            -scheme AdButlerSDK \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -configuration Debug \
+            | tail -40
